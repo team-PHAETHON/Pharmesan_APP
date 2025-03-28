@@ -32,8 +32,3 @@ Future<http.Response> getMedicineDataByName(String searchSentence) async {
   }
   // get all post
 }
-
-// To parse this JSON data, do
-//
-//     final welcome = welcomeFromJson(jsonString);
-

@@ -16,32 +16,62 @@ class MedicineInformationScreen extends StatefulWidget {
 }
 
 class _MedicineInformationScreenState extends State<MedicineInformationScreen> {
+  final String medicineImageURL =
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBgjfXhLFiTbASWw6Wz6o3ySlPhHPJdWis8A&s";
+
+  final String medicineName = "약1";
+  final String medicineDescription =
+      "이 약은 티눈, 사마귀 치료에 사용됩니다.\n\n 사용방법 : 아침 저녁으로~~";
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Container(
-        height: MediaQuery.of(context).size.height * rateOfHeaderHeight,
-        width: double.infinity,
-        child: Container(
-          color: Colors.white,
-          width: headerWidth,
-          padding: EdgeInsets.fromLTRB(
-            leftPadding,
-            topPadding,
-            rightPadding,
-            bottomPadding,
-          ),
-          child: Text(
-            "Pharmesan",
+      body: Padding(
+        padding: EdgeInsets.fromLTRB(leftPadding, topPadding, rightPadding, bottomPadding),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text("PHAETHON",
             style: TextStyle(
               fontSize: titleFontSize,
               fontWeight: FontWeight.bold,
               color: Color(mainThemeColor),
               ),
             ),
-          ),
+            SizedBox(height: 20,),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Image.network(
+                  medicineImageURL,
+                  width: 100,
+                  height: 100,
+                  fit: BoxFit.cover,
+                ),
+                SizedBox(width: 20,),
+                Expanded(
+                  child: Text(
+                    medicineName,
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                      color: Color(mainThemeColor),
+                    ),
+                  ),
+                )
+              ],
+            ),
+            SizedBox(height: 20,),
+            Expanded(child: SingleChildScrollView(
+              child: Text(
+                medicineDescription,
+                style: TextStyle(fontSize: 16, color: Colors.black87),
+              )
+            ))
+          ],
         ),
-      );
+      ),
+    );
   }
 }
