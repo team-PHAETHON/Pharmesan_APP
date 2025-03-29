@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/screens/medicine_information_screen.dart';
-import 'package:myapp/service/db_server.dart';
 import 'package:myapp/screens/home_screen.dart';
 
 void main() {
