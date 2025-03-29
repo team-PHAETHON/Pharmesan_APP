@@ -54,7 +54,7 @@ class _MedicineInformationScreenState extends State<MedicineInformationScreen> {
   // final String medicineName = "약1";
   // final String medicineDescription =
   //     "이 약은 티눈, 사마귀 치료에 사용됩니다.\n\n 사용방법 : 아침 저녁으로~~";
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -78,48 +78,53 @@ class _MedicineInformationScreenState extends State<MedicineInformationScreen> {
               rightPadding,
               bottomPadding,
             ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text("PHAETHON",
-            style: TextStyle(
-              fontSize: titleFontSize,
-              fontWeight: FontWeight.bold,
-              color: Color(mainThemeColor),
-              ),
-            ),
-            SizedBox(height: 20,),
-            Row(
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Image.network(
-                  medicineImageURL,
-                  width: 100,
-                  height: 100,
-                  fit: BoxFit.cover,
+                Text(
+                  "PHAETHON",
+                  style: TextStyle(
+                    fontSize: titleFontSize,
+                    fontWeight: FontWeight.bold,
+                    color: Color(mainThemeColor),
+                  ),
                 ),
-                SizedBox(width: 20,),
+                SizedBox(height: 20),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Image.network(
+                      medicineImageURL,
+                      width: 100,
+                      height: 100,
+                      fit: BoxFit.cover,
+                    ),
+                    SizedBox(width: 20),
+                    Expanded(
+                      child: Text(
+                        data.name ?? "이름 없음",
+                        style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                          color: Color(mainThemeColor),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 20),
                 Expanded(
-                  child: Text(
-                    medicineName,
-                    style: TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
-                      color: Color(mainThemeColor),
+                  child: SingleChildScrollView(
+                    child: Text(
+                      data.description ?? "설명 없음",
+                      style: TextStyle(fontSize: 16, color: Colors.black87),
                     ),
                   ),
-                )
+                ),
               ],
             ),
-            SizedBox(height: 20,),
-            Expanded(child: SingleChildScrollView(
-              child: Text(
-                medicineDescription,
-                style: TextStyle(fontSize: 16, color: Colors.black87),
-              )
-            ))
-          ],
-        ),
+          );
+        },
       ),
     );
   }
