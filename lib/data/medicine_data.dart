@@ -21,4 +21,20 @@ class MedicineData {
     'name': name,
     'description': description,
   };
+
+  Future<MedicineData?> getMedicineDataByName(String searchSentence) async {
+    final response = await http.get(
+      Uri.parse(
+        'https://practicespringboot-tdxsp.run.goorm.site/medicine/search?name=$searchSentence',
+      ),
+      headers: {'Content-Type': 'application/json'},
+    );
+
+    if (response.statusCode == 200) {
+      final jsonData = json.decode(response.body);
+      return MedicineData.fromJson(jsonData);
+    } else {
+      return null;
+    }
+  }
 }
