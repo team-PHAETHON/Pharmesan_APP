@@ -15,7 +15,6 @@ class MedicineData {
     return MedicineData(id: json['id'], name: json['name'], description: json['description']);
   }
 
-
   Map<String, dynamic> toJson() => {
     'id': id,
     'name': name,
