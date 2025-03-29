@@ -9,7 +9,11 @@ class MedicineData {
   MedicineData({required this.id, this.name, this.description});
 
   factory MedicineData.fromJson(Map<String, dynamic> json) {
-    return MedicineData(id: json['id'], name: json['name'], description: json['description']);
+    return MedicineData(
+      id: json['id'],
+      name: json['name'],
+      description: json['description'],
+    );
   }
 
   Map<String, dynamic> toJson() => {
