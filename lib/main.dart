@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Pharmesan',
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: MedicineInformationScreen(),
+      home: HomeScreen(),
     );
   }
 }
