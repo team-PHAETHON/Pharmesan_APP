@@ -1,8 +1,5 @@
 import 'dart:convert';
-
-MedicineData medicineDataFromJson(String str) => MedicineData.fromJson(json.decode(str));
-
-String medicineDataToJson(MedicineData data) => json.encode(data.toJson());
+import 'package:http/http.dart' as http;
 
 class MedicineData {
   final String? id;
