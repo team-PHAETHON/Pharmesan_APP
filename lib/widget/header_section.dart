@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/screens/medicine_information_screen.dart';
 import 'searching_bar.dart';
 
 const double leftPadding = 30;
@@ -15,6 +16,15 @@ class HeaderSection extends StatelessWidget {
   final ValueChanged<String> onTextChanged;
 
   const HeaderSection({required this.size, required this.onTextChanged});
+
+  void _navigateToSearchResult(BuildContext context, String searchQuery) {
+    Navigator.push(
+      context, 
+      MaterialPageRoute(
+        builder: (context) => MedicineInformationScreen(medicineName: searchQuery), 
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +52,7 @@ class HeaderSection extends StatelessWidget {
                 color: Colors.white,
               ),
             ),
-            SearchingBar(onTextChanged: onTextChanged),
+            SearchingBar(onSearch: (query) => _navigateToSearchResult(context, query)),
           ],
         ),
       ),
