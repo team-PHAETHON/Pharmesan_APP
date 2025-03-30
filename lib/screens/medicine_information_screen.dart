@@ -32,10 +32,7 @@ class MedicineInformationScreen extends StatefulWidget {
 }
 
 class _MedicineInformationScreenState extends State<MedicineInformationScreen> {
-  final String medicineImageURL =
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBgjfXhLFiTbASWw6Wz6o3ySlPhHPJdWis8A&s";
-
-  late Future<MedicineData?> _medicineData;
+  late Future<List<MedicineData>> _medicineData;
 
   @override
   void initState() {
@@ -46,10 +43,11 @@ class _MedicineInformationScreenState extends State<MedicineInformationScreen> {
   Future<MedicineData?> fetchMedicineData(String name) async {
     final response = await http.get(
       Uri.parse(
-        'https://practicespringboot-tdxsp.run.goorm.site/medicine/search?name=$name',
+        'https://practicespringboot-tdxsp.run.goorm.site/drug/search?itemName=${widget.medicineName}',
       ),
       headers: {'Content-Type': 'application/json'},
     );
+    debugPrint("response 생성");
 
     if (response.statusCode == 200) {
       final jsonData = json.decode(response.body);

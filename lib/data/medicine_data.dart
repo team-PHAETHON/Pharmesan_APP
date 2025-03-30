@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class MedicineData {
-  final String? id;
+  final int id;
   final String? name;
   final String? description;
 
@@ -11,21 +11,21 @@ class MedicineData {
   factory MedicineData.fromJson(Map<String, dynamic> json) {
     return MedicineData(
       id: json['id'],
-      name: json['name'],
-      description: json['description'],
+      name: json['itemName'],
+      description: json['itemImage'],
     );
   }
 
   Map<String, dynamic> toJson() => {
     'id': id,
-    'name': name,
-    'description': description,
+    'itemName': name,
+    'itemImage': description,
   };
 
   Future<MedicineData?> getMedicineDataByName(String searchSentence) async {
     final response = await http.get(
       Uri.parse(
-        'https://practicespringboot-tdxsp.run.goorm.site/medicine/search?name=$searchSentence',
+        'https://practicespringboot-tdxsp.run.goorm.site/drug/search?itemName=박정근약'
       ),
       headers: {'Content-Type': 'application/json'},
     );
