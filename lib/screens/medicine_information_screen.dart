@@ -40,7 +40,7 @@ class _MedicineInformationScreenState extends State<MedicineInformationScreen> {
     _medicineData = fetchMedicineData(widget.medicineName);
   }
 
-  Future<MedicineData?> fetchMedicineData(String name) async {
+  Future<List<MedicineData>> fetchMedicineData(String name) async {
     final response = await http.get(
       Uri.parse(
         'https://practicespringboot-tdxsp.run.goorm.site/drug/search?itemName=${widget.medicineName}',
@@ -49,24 +49,20 @@ class _MedicineInformationScreenState extends State<MedicineInformationScreen> {
     );
     debugPrint("response 생성");
 
-    if (response.statusCode == 200) {
-      final jsonData = json.decode(response.body);
-      if (jsonData != null) {
-        return MedicineData.fromJson(jsonData);
-      }
+    if (response.statusCode == successfullyGetDataCode) {
+      debugPrint("200 OK");
+      final List<dynamic> jsonData = json.decode(response.body);
+      return jsonData.map((data) => MedicineData.fromJson(data)).toList();
+    } else {
+      throw Exception('데이터를 불러올 수 없습니다');
     }
-    return null;
   }
-
-  // final String medicineName = "약1";
-  // final String medicineDescription =
-  //     "이 약은 티눈, 사마귀 치료에 사용됩니다.\n\n 사용방법 : 아침 저녁으로~~";
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: FutureBuilder<MedicineData?>(
+      body: FutureBuilder<List<MedicineData>>(
         future: _medicineData,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
@@ -77,7 +73,7 @@ class _MedicineInformationScreenState extends State<MedicineInformationScreen> {
           } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
             return Center(child: Text(noResult));
           }
-          final data = snapshot.data!;
+          final data = snapshot.data!.first;
 
           return Padding(
             padding: EdgeInsets.fromLTRB(
