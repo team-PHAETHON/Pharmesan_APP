@@ -22,18 +22,21 @@ Future<http.Response> getMedicineData() async {
   // get all post
 }
 
-Future<http.Response> getMedicineDataByName(String searchSentence) async {
+Future<List<MedicineData>> fetchMedicineDataByName(String searchSentence) async {
   final response = await http.get(
-    Uri.parse('https://practicespringboot-tdxsp.run.goorm.site/medicine/search?name=$searchSentence'), // json
+    Uri.parse(
+      'https://practicespringboot-tdxsp.run.goorm.site/drug/search?itemName=$searchSentence',
+    ),
     headers: {'Content-Type': 'application/json'},
   );
-  if (response.statusCode == 200) {
-    print("200 OK");
-    print(response);
-    return response;
+
+  debugPrint("response 생성");
+
+  if (response.statusCode == successfullyGetDataCode) {
+    debugPrint("200 OK");
+    final List<dynamic> jsonData = json.decode(response.body);
+    return jsonData.map((data) => MedicineData.fromJson(data)).toList();
   } else {
-    print("Error");
-    throw Exception('Failed to load post list');
+    throw Exception('데이터를 불러올 수 없습니다');
   }
-  // get all post
 }
