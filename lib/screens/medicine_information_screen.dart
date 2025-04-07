@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/data/medicine_data.dart';
-import 'dart:convert';
-import 'package:http/http.dart' as http;
+import 'package:myapp/service/db_server.dart';
 
 const double leftPadding = 30;
 const double topPadding = 80;
