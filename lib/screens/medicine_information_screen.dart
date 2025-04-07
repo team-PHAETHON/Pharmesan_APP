@@ -37,25 +37,7 @@ class _MedicineInformationScreenState extends State<MedicineInformationScreen> {
   @override
   void initState() {
     super.initState();
-    _medicineData = fetchMedicineData(widget.medicineName);
-  }
-
-  Future<List<MedicineData>> fetchMedicineData(String name) async {
-    final response = await http.get(
-      Uri.parse(
-        'https://practicespringboot-tdxsp.run.goorm.site/drug/search?itemName=${widget.medicineName}',
-      ),
-      headers: {'Content-Type': 'application/json'},
-    );
-    debugPrint("response 생성");
-
-    if (response.statusCode == successfullyGetDataCode) {
-      debugPrint("200 OK");
-      final List<dynamic> jsonData = json.decode(response.body);
-      return jsonData.map((data) => MedicineData.fromJson(data)).toList();
-    } else {
-      throw Exception('데이터를 불러올 수 없습니다');
-    }
+    _medicineData = fetchMedicineDataByName(widget.medicineName);
   }
 
   @override
