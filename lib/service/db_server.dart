@@ -1,5 +1,10 @@
 // ignore_for_file: avoid_print
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:myapp/data/medicine_data.dart';
+import 'dart:convert';
+
+const int successfullyGetDataCode = 200;
 
 Future<http.Response> getMedicineData() async {
   final response = await http.get(
