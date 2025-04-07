@@ -18,19 +18,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-      // body: Center(
-      //   child: Column(
-      //     mainAxisAlignment: MainAxisAlignment.center,
-      //     children: <Widget>[
-      //       Row(
-      //         mainAxisAlignment: MainAxisAlignment.start,
-      //         children: [Container(width: 75), Text("Pharmesan")],
-      //       ),
-      //       Text('${response}'),
-      //       ElevatedButton(
-      //         onPressed: callSpringServer,
-      //         child: Text('call API'),
-      //       ),
-      //     ],
-      //   ),
-      // ),
