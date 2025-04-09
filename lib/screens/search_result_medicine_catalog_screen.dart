@@ -1,6 +1,7 @@
 // Suggested code may be subject to a license. Learn more: ~LicenseLog:2501771215.
 import 'package:flutter/material.dart';
 import 'package:myapp/data/medicine_data.dart';
+import 'package:myapp/widget/search_result_catalog.dart';
 
 class SearchResultMedicineCatalogScreen extends StatefulWidget {
   @override
@@ -20,7 +21,7 @@ class _SearchResultMedicineCatalogScreen
         backgroundColor: Color(0xffDFDFDF),
         elevation: 0,
       ),
-      body: ListView(),
+      body: SearchResultCatalog(),
     );
   }
 }
