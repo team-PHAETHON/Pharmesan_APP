@@ -21,7 +21,7 @@ class _SearchResultMedicineCatalogScreen
         backgroundColor: Color(0xffDFDFDF),
         elevation: 0,
       ),
-      body: SearchResultCatalog(),
+      body: SearchResultCatalog(medicines: medicines),
     );
   }
 }
