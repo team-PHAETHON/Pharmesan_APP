@@ -16,6 +16,7 @@ class _SearchResultMedicineCatalogScreen
         backgroundColor: Color(0xffDFDFDF),
         elevation: 0,
       ),
+      body: ListView(),
     );
   }
 }
