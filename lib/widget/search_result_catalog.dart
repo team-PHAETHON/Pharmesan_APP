@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:myapp/data/medicine_data.dart';
+import 'package:myapp/widget/medicine_card.dart';
 
 class SearchResultCatalog extends StatefulWidget {
   const SearchResultCatalog({super.key, required this.medicines});
