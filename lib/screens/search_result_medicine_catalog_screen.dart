@@ -10,6 +10,12 @@ class _SearchResultMedicineCatalogScreen
     extends State<SearchResultMedicineCatalogScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(""),
+        backgroundColor: Color(0xffDFDFDF),
+        elevation: 0,
+      ),
+    );
   }
 }
