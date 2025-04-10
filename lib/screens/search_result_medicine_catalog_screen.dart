@@ -18,7 +18,6 @@ class _SearchResultMedicineCatalogScreen
     return Scaffold(
       appBar: AppBar(
         title: Text(""),
-        backgroundColor: Color(0xffDFDFDF),
         elevation: 0,
       ),
       body: SearchResultCatalog(medicines: medicines),
