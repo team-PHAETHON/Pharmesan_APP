@@ -9,8 +9,10 @@ class MedicineCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: ListTile(
+        leading: FlutterLogo(size: 56.0),
         title: Text(medicine.name ?? ''),
         subtitle: Text(medicine.description ?? ''),
+        isThreeLine: true,
       ),
     );
   }
