@@ -30,7 +30,6 @@ class _SearchResultCatalog extends State<SearchResultCatalog> {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      scrollDirection: Axis.vertical,
       padding: const EdgeInsets.all(20),
       itemCount: widget.medicines.length,
       itemBuilder: (BuildContext context, int index) {
@@ -40,5 +39,5 @@ class _SearchResultCatalog extends State<SearchResultCatalog> {
         /// return MedicineCard(medicine: widget.medicines[index]);
       },
     );
-  }
+  } 
 }
