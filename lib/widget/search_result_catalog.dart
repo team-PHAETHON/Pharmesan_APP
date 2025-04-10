@@ -29,15 +29,17 @@ class _SearchResultCatalog extends State<SearchResultCatalog> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
+    return Scaffold(
+      backgroundColor: Color(0xffDFDFDF),
+      body: ListView.builder(
       padding: const EdgeInsets.all(20),
       itemCount: widget.medicines.length,
       itemBuilder: (BuildContext context, int index) {
         return Text("${widget.medicines[index].name} 의 ${index + 1} 번째 text");
-
-        /// TODO: MedicineCard 이용해 ListView 연결
-        /// return MedicineCard(medicine: widget.medicines[index]);
-      },
+          /// TODO: MedicineCard 이용해 ListView 연결
+          /// return MedicineCard(medicine: widget.medicines[index]);
+        },
+      ),
     );
-  } 
+  }
 }
