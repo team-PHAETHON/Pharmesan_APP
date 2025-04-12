@@ -20,7 +20,7 @@ class _SearchResultCatalog extends State<SearchResultCatalog> {
   }
 
   void addDummy() {
-    for (var i = 1; i < 5; i++) {
+    for (var i = 1; i < 50; i++) {
       widget.medicines.add(
         MedicineData(id: i, name: "dummy + $i", description: "dummy"),
       );
@@ -35,9 +35,7 @@ class _SearchResultCatalog extends State<SearchResultCatalog> {
       padding: const EdgeInsets.all(20),
       itemCount: widget.medicines.length,
       itemBuilder: (BuildContext context, int index) {
-        return Text("${widget.medicines[index].name} 의 ${index + 1} 번째 text");
-          /// TODO: MedicineCard 이용해 ListView 연결
-          /// return MedicineCard(medicine: widget.medicines[index]);
+          return MedicineCard(medicine: widget.medicines[index]);
         },
       ),
     );
