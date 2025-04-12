@@ -1,1 +1,3 @@
-const int greyColor = 0xffDFDFDF;
+class ColorTheme {
+  static const int greyColor = 0xffDFDFDF;
+}

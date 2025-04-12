@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/color_theme/color_theme.dart';
 import 'package:myapp/data/medicine_data.dart';
 import 'package:myapp/widget/search_result_catalog.dart';
 
@@ -27,7 +28,7 @@ class _SearchResultMedicineCatalogScreen
         ),
       ),
       body: Scaffold(
-        backgroundColor: Color(0xffDFDFDF),
+        backgroundColor: Color(ColorTheme.greyColor),
         body: SearchResultCatalog(medicines: medicines),
       ),
     );
