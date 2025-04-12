@@ -22,6 +22,7 @@ class MedicineData {
     'itemImage': description,
   };
 
+  /// TODO: Delete this function
   Future<MedicineData?> getMedicineDataByName(String searchSentence) async {
     final response = await http.get(
       Uri.parse(
