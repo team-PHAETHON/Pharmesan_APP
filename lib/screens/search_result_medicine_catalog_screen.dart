@@ -25,7 +25,10 @@ class _SearchResultMedicineCatalogScreen
           foregroundColor: Colors.black,
         ),
       ),
-      body: SearchResultCatalog(medicines: medicines),
+      body: Scaffold(
+        backgroundColor: Color(0xffDFDFDF),
+        body: SearchResultCatalog(medicines: medicines),
+      ),
     );
   }
 }

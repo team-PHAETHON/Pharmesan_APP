@@ -29,15 +29,12 @@ class _SearchResultCatalog extends State<SearchResultCatalog> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Color(0xffDFDFDF),
-      body: ListView.builder(
+    return ListView.builder(
       padding: const EdgeInsets.all(20),
       itemCount: widget.medicines.length,
       itemBuilder: (BuildContext context, int index) {
-          return MedicineCard(medicine: widget.medicines[index]);
-        },
-      ),
+        return MedicineCard(medicine: widget.medicines[index]);
+      },
     );
   }
 }
