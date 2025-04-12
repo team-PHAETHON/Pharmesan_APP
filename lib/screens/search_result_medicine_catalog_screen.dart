@@ -16,9 +16,14 @@ class _SearchResultMedicineCatalogScreen
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(""),
-        elevation: 0,
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(100.0),
+        child: AppBar(
+          automaticallyImplyLeading: true,
+          title: Text(""),
+          backgroundColor: Colors.white,
+          foregroundColor: Colors.black,
+        ),
       ),
       body: SearchResultCatalog(medicines: medicines),
     );
