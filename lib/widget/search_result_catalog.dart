@@ -16,15 +16,6 @@ class _SearchResultCatalog extends State<SearchResultCatalog> {
   @override
   void initState() {
     super.initState();
-    addDummy();
-  }
-
-  void addDummy() {
-    for (var i = 1; i < 50; i++) {
-      widget.medicines.add(
-        MedicineData(id: i, name: "dummy + $i", description: "dummy"),
-      );
-    }
   }
 
   @override
