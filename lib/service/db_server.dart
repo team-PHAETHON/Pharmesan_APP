@@ -8,7 +8,9 @@ const int successfullyGetDataCode = 200;
 
 Future<http.Response> getMedicineData() async {
   final response = await http.get(
-    Uri.parse('https://port-0-pharmesan-be-m9b5f19i30884436.sel4.cloudtype.app/drug/search?itemName=약'), // json
+    Uri.parse(
+      'https://port-0-pharmesan-be-m9b5f19i30884436.sel4.cloudtype.app/drug/search?itemName=약',
+    ), // json
     headers: {'Content-Type': 'application/json'},
   );
   if (response.statusCode == 200) {
@@ -22,7 +24,9 @@ Future<http.Response> getMedicineData() async {
   // get all post
 }
 
-Future<List<MedicineData>> fetchMedicineDataByName(String searchSentence) async {
+Future<List<MedicineData>> fetchMedicineDataByName(
+  String searchSentence,
+) async {
   final response = await http.get(
     Uri.parse(
       'https://port-0-pharmesan-be-m9b5f19i30884436.sel4.cloudtype.app/drug/search?itemName=$searchSentence',
