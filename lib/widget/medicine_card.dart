@@ -17,8 +17,14 @@ class MedicineCard extends StatelessWidget {
         child: ListTile(
           /// TODO: add picture of medicine
           leading: FlutterLogo(size: 56.0),
-          title: Text(medicine.name ?? ''),
-          subtitle: Text(medicine.description ?? ''),
+          title: Text(
+            medicine.name ?? '',
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          ),
+          subtitle: Text(
+            medicine.description ?? '',
+            style: TextStyle(fontSize: 15, color: Colors.grey), 
+          ),
           isThreeLine: true,
         ),
       ),
