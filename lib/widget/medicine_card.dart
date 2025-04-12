@@ -7,16 +7,20 @@ class MedicineCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      color: Colors.white,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15.0)
-      ),
-      child: ListTile(
-        leading: FlutterLogo(size: 56.0),
-        title: Text(medicine.name ?? ''),
-        subtitle: Text(medicine.description ?? ''),
-        isThreeLine: true,
+    return SizedBox(
+      height: 100,
+      child: Card(
+        color: Colors.white,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15.0),
+        ),
+        child: ListTile(
+          /// TODO: add picture of medicine
+          leading: FlutterLogo(size: 56.0),
+          title: Text(medicine.name ?? ''),
+          subtitle: Text(medicine.description ?? ''),
+          isThreeLine: true,
+        ),
       ),
     );
   }
