@@ -44,3 +44,23 @@ Future<List<MedicineData>> fetchMedicineDataByName(
     throw Exception('데이터를 불러올 수 없습니다');
   }
 }
+
+Future<http.Response> saveMedicine(
+  int id,
+  String? name,
+  String? description,
+) async {
+  var uri = Uri.parse(
+    'https://port-0-pharmesan-be-m9b5f19i30884436.sel4.cloudtype.app/drug/add',
+  );
+
+  Map<String, String> headers = {"Content-Type": "application/json"};
+
+  Map data = {'id': '$id', 'name': '$name', 'description': '$description'};
+  debugPrint("data 생성");
+
+  // body를 json으로 인코딩
+  var body = json.encode(data);
+  var response = await http.post(uri, headers: headers, body: body);
+  return response;
+}
