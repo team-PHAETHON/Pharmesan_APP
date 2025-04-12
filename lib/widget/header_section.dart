@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/screens/medicine_information_screen.dart';
+import 'package:myapp/screens/search_result_medicine_catalog_screen.dart';
 import 'searching_bar.dart';
 
 const double leftPadding = 30;
@@ -21,7 +21,7 @@ class HeaderSection extends StatelessWidget {
     Navigator.push(
       context, 
       MaterialPageRoute(
-        builder: (context) => MedicineInformationScreen(medicineName: searchQuery), 
+        builder: (context) => SearchResultMedicineCatalogScreen(medicineName: searchQuery), 
       ),
     );
   }
