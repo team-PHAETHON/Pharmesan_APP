@@ -60,6 +60,7 @@ class _HomeBottomScreenState extends State<HomeBottomScreen> {
                 ),
               ),
               Flexible(
+                /// TODO: 메인화면에 기능 추가 및 수정 예정
                 child: SingleChildScrollView(
                   controller: scrollController,
                   child: Padding(
