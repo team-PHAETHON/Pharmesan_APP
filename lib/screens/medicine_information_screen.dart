@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/color_theme/color_theme.dart';
 import 'package:myapp/data/medicine_data.dart';
 import 'package:myapp/service/db_server.dart';
 
@@ -9,7 +10,6 @@ const double bottomPadding = 50;
 const double rateOfHeaderHeight = 0.35;
 const double titleFontSize = 28;
 const double headerWidth = 300;
-const int mainThemeColor = 0xff578FCA;
 const String medicineImageURL =
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBgjfXhLFiTbASWw6Wz6o3ySlPhHPJdWis8A&s";
 const String noNameText = "이름 없음";
@@ -71,7 +71,7 @@ class _MedicineInformationScreenState extends State<MedicineInformationScreen> {
                   style: TextStyle(
                     fontSize: titleFontSize,
                     fontWeight: FontWeight.bold,
-                    color: Color(mainThemeColor),
+                    color: Color(ColorTheme.mainThemeBlueColor),
                   ),
                 ),
                 SizedBox(height: 20),
@@ -91,7 +91,7 @@ class _MedicineInformationScreenState extends State<MedicineInformationScreen> {
                         style: TextStyle(
                           fontSize: medicineNameTextSize,
                           fontWeight: FontWeight.bold,
-                          color: Color(mainThemeColor),
+                          color: Color(ColorTheme.mainThemeBlueColor),
                         ),
                       ),
                     ),
