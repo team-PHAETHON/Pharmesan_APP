@@ -1,4 +1,3 @@
-// Suggested code may be subject to a license. Learn more: ~LicenseLog:2501771215.
 import 'package:flutter/material.dart';
 import 'package:myapp/data/medicine_data.dart';
 import 'package:myapp/widget/search_result_catalog.dart';
@@ -19,10 +18,12 @@ class _SearchResultMedicineCatalogScreen
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(80.0),
         child: AppBar(
+          leading: const BackButton(color: Colors.grey),
           automaticallyImplyLeading: true,
           title: Text(""),
           backgroundColor: Colors.white,
           foregroundColor: Colors.black,
+          scrolledUnderElevation: 0,
         ),
       ),
       body: Scaffold(
