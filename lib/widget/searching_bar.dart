@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/screens/medicine_information_screen.dart';
+import 'package:myapp/color_theme/color_theme.dart';
 import 'package:myapp/screens/search_result_medicine_catalog_screen.dart';
 
-const int searchBarColor = 0xffA1E3F9;
+const String hintText = "약 이름으로 검색하세요!";
+const double focusingRadius = 30.0;
+const double basicRadius = 10.0;
+const double borderWidth = 1.0;
 
 class SearchingBar extends StatefulWidget {
   final ValueChanged<String> onSearch;
@@ -22,7 +25,9 @@ class _SearchingBarState extends State<SearchingBar> {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => SearchResultMedicineCatalogScreen(medicineName: query),
+          builder:
+              (context) =>
+                  SearchResultMedicineCatalogScreen(medicineName: query),
         ),
       );
     }
@@ -38,23 +43,36 @@ class _SearchingBarState extends State<SearchingBar> {
           onSubmitted: (_) => _onSearch(),
           decoration: InputDecoration(
             filled: true,
-            fillColor: Color(searchBarColor),
+            fillColor: Color(ColorTheme.searchBarColor),
             prefixIcon: Icon(Icons.search),
-            hintText: '약 이름으로 검색하세요!',
+            hintText: hintText,
             suffixIcon: IconButton(
               onPressed: _onSearch,
               icon: Icon(Icons.arrow_forward),
             ),
             focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(30)),
-              borderSide: BorderSide(width: 1, color: Color(searchBarColor)),
+              // 사용자가 필드에 입력중일 때
+              borderRadius: BorderRadius.all(
+                Radius.circular(focusingRadius),
+              ),
+              borderSide: BorderSide(
+                width: borderWidth,
+                color: Color(ColorTheme.searchBarColor),
+              ),
             ),
             enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(30)),
-              borderSide: BorderSide(width: 1, color: Color(searchBarColor)),
+              // 사용자가 입력은 할 수 있지만, 비활성화 상태일 때
+              borderRadius: BorderRadius.all(
+                Radius.circular(focusingRadius),
+              ),
+              borderSide: BorderSide(
+                width: borderWidth,
+                color: Color(ColorTheme.searchBarColor),
+              ),
             ),
             border: OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(10.0)),
+              // 기본 상태일 때
+              borderRadius: BorderRadius.all(Radius.circular(basicRadius)),
             ),
           ),
         ),

@@ -14,11 +14,12 @@ const String medicineImageURL =
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBgjfXhLFiTbASWw6Wz6o3ySlPhHPJdWis8A&s";
 const String noNameText = "이름 없음";
 const String noDescriptionText = "설명 없음";
-const String errorInSearchingText = "데이터를 불러올 수 없습니다.";
+const String errorInSearchingText = "에러가 발생했습니다.";
 const String noResult = "검색 결과가 없습니다.";
 const double medicineNameTextSize = 22;
 const double medicineDescriptionTextSize = 16;
 const int successfullyGetDataCode = 200;
+const double lengthOfPadding = 20;
 
 class MedicineInformationScreen extends StatefulWidget {
   final String medicineName;
@@ -74,7 +75,7 @@ class _MedicineInformationScreenState extends State<MedicineInformationScreen> {
                     color: Color(ColorTheme.mainThemeBlueColor),
                   ),
                 ),
-                SizedBox(height: 20),
+                SizedBox(height: lengthOfPadding),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -84,7 +85,7 @@ class _MedicineInformationScreenState extends State<MedicineInformationScreen> {
                       height: 100,
                       fit: BoxFit.cover,
                     ),
-                    SizedBox(width: 20),
+                    SizedBox(width: lengthOfPadding),
                     Expanded(
                       child: Text(
                         data.name ?? noNameText,
@@ -97,7 +98,7 @@ class _MedicineInformationScreenState extends State<MedicineInformationScreen> {
                     ),
                   ],
                 ),
-                SizedBox(height: 20),
+                SizedBox(height: lengthOfPadding),
                 Expanded(
                   child: SingleChildScrollView(
                     child: Text(

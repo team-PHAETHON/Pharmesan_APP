@@ -4,6 +4,12 @@ import 'package:myapp/data/medicine_data.dart';
 import 'package:myapp/service/db_server.dart';
 import 'package:myapp/widget/search_result_catalog.dart';
 
+const String errorInSearchingText = "에러가 발생했습니다.";
+const String noResult = "검색 결과가 없습니다.";
+const double appBarHeight = 80.0;
+const String appBarTitle = "";
+const double noChangeColorWhenScrolled = 0;
+
 class SearchResultMedicineCatalogScreen extends StatefulWidget {
   final String medicineName;
 
@@ -28,14 +34,14 @@ class _SearchResultMedicineCatalogScreen
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(80.0),
+        preferredSize: Size.fromHeight(appBarHeight),
         child: AppBar(
           leading: const BackButton(color: Colors.grey),
           automaticallyImplyLeading: true,
-          title: Text(""),
+          title: Text(appBarTitle),
           backgroundColor: Colors.white,
           foregroundColor: Colors.black,
-          scrolledUnderElevation: 0,
+          scrolledUnderElevation: noChangeColorWhenScrolled,
         ),
       ),
       body: Scaffold(
@@ -47,11 +53,10 @@ class _SearchResultMedicineCatalogScreen
               return Center(child: CircularProgressIndicator());
             } else if (snapshot.hasError) {
               debugPrint(snapshot.error.toString());
-              return Center(child: Text("에러가 발생했습니다."));
+              return Center(child: Text(errorInSearchingText));
             } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-              return Center(child: Text("검색결과가 존재하지 않습니다."));
+              return Center(child: Text(noResult));
             }
-
             return SearchResultCatalog(medicines: snapshot.data!);
           },
         ),

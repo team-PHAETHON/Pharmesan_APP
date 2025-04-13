@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+
+const double cornerRadius = 20;
+const int animationTime = 300;
+const double minChildSize = 0.7;
+const double maxChildSize = 0.8;
+const double dragBarTopMargin = 10;
+const double dragBarRadius = 10;
 
 class HomeBottomScreen extends StatefulWidget {
   @override
@@ -19,43 +25,47 @@ class _HomeBottomScreenState extends State<HomeBottomScreen> {
   Widget build(BuildContext context) {
     return DraggableScrollableSheet(
       controller: _controller,
-      initialChildSize: 0.7,
-      minChildSize: 0.7,
-      maxChildSize: 0.8,
+      initialChildSize: minChildSize,
+      minChildSize: minChildSize,
+      maxChildSize: maxChildSize,
       builder: (context, scrollController) {
         return Container(
           decoration: BoxDecoration(
             color: Colors.white,
-            borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+            borderRadius: BorderRadius.vertical(
+              top: Radius.circular(cornerRadius),
+            ),
           ),
           child: Column(
             children: [
               GestureDetector(
                 onTap: () {
                   final currentSize = _controller.size;
-                  if (currentSize < 0.8) {
-                    // ✅ 현재 크기가 작으면 maxChildSize로 확장
+                  if (currentSize < maxChildSize) {
+                    /// ✅ 현재 크기가 작으면 maxChildSize로 확장
                     _controller.animateTo(
-                      0.8,
-                      duration: Duration(milliseconds: 300),
+                      maxChildSize,
+                      duration: Duration(milliseconds: animationTime),
                       curve: Curves.easeInOut,
                     );
                   } else {
-                    // ✅ 이미 최대 크기면 minChildSize로 축소
+                    /// ✅ 이미 최대 크기면 minChildSize로 축소
                     _controller.animateTo(
-                      0.7,
-                      duration: Duration(milliseconds: 300),
+                      minChildSize,
+                      duration: Duration(milliseconds: animationTime),
                       curve: Curves.easeInOut,
                     );
                   }
                 },
+
+                /// 드래그 용 회색 수직 바
                 child: Container(
                   width: 50,
                   height: 5,
-                  margin: EdgeInsets.symmetric(vertical: 10),
+                  margin: EdgeInsets.symmetric(vertical: dragBarTopMargin),
                   decoration: BoxDecoration(
                     color: Colors.grey,
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(dragBarRadius),
                   ),
                 ),
               ),
