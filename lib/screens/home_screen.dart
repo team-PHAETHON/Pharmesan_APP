@@ -13,10 +13,11 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     putMedicineInDB();
+    debugPrint("생성, 넣기 OK");
   }
 
   void putMedicineInDB() {
-    for(var i = 1; i <= 5; i++) {
+    for (var i = 1; i <= 5; i++) {
       saveMedicine(i, "세미콜론약+$i", "이 약은 $i번째 약입니다");
     }
   }
