@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/screens/medicine_information_screen.dart';
+import 'package:myapp/screens/search_result_medicine_catalog_screen.dart';
 
 const int searchBarColor = 0xffA1E3F9;
 
@@ -21,7 +22,7 @@ class _SearchingBarState extends State<SearchingBar> {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => MedicineInformationScreen(medicineName: query),
+          builder: (context) => SearchResultMedicineCatalogScreen(medicineName: query),
         ),
       );
     }
