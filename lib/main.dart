@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         brightness: Brightness.light,
         appBarTheme: AppBarTheme(
-          backgroundColor: Color(0xffFFFFFF),
+          backgroundColor: Colors.white,
         ),
       ),
       home: HomeScreen(),
