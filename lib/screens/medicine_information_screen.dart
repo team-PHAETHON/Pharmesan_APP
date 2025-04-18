@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/color_theme/color_theme.dart';
 import 'package:myapp/data/medicine_data.dart';
-import 'dart:convert';
-import 'package:http/http.dart' as http;
+import 'package:myapp/service/db_server.dart';
 
 const double leftPadding = 30;
 const double topPadding = 80;
@@ -10,16 +10,16 @@ const double bottomPadding = 50;
 const double rateOfHeaderHeight = 0.35;
 const double titleFontSize = 28;
 const double headerWidth = 300;
-const int mainThemeColor = 0xff578FCA;
 const String medicineImageURL =
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBgjfXhLFiTbASWw6Wz6o3ySlPhHPJdWis8A&s";
 const String noNameText = "이름 없음";
 const String noDescriptionText = "설명 없음";
-const String errorInSearchingText = "데이터를 불러올 수 없습니다.";
+const String errorInSearchingText = "에러가 발생했습니다.";
 const String noResult = "검색 결과가 없습니다.";
 const double medicineNameTextSize = 22;
 const double medicineDescriptionTextSize = 16;
 const int successfullyGetDataCode = 200;
+const double lengthOfPadding = 20;
 
 class MedicineInformationScreen extends StatefulWidget {
   final String medicineName;
@@ -37,25 +37,7 @@ class _MedicineInformationScreenState extends State<MedicineInformationScreen> {
   @override
   void initState() {
     super.initState();
-    _medicineData = fetchMedicineData(widget.medicineName);
-  }
-
-  Future<List<MedicineData>> fetchMedicineData(String name) async {
-    final response = await http.get(
-      Uri.parse(
-        'https://practicespringboot-tdxsp.run.goorm.site/drug/search?itemName=${widget.medicineName}',
-      ),
-      headers: {'Content-Type': 'application/json'},
-    );
-    debugPrint("response 생성");
-
-    if (response.statusCode == successfullyGetDataCode) {
-      debugPrint("200 OK");
-      final List<dynamic> jsonData = json.decode(response.body);
-      return jsonData.map((data) => MedicineData.fromJson(data)).toList();
-    } else {
-      throw Exception('데이터를 불러올 수 없습니다');
-    }
+    _medicineData = fetchMedicineDataByName(widget.medicineName);
   }
 
   @override
@@ -90,10 +72,10 @@ class _MedicineInformationScreenState extends State<MedicineInformationScreen> {
                   style: TextStyle(
                     fontSize: titleFontSize,
                     fontWeight: FontWeight.bold,
-                    color: Color(mainThemeColor),
+                    color: Color(ColorTheme.mainThemeBlueColor),
                   ),
                 ),
-                SizedBox(height: 20),
+                SizedBox(height: lengthOfPadding),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -103,20 +85,20 @@ class _MedicineInformationScreenState extends State<MedicineInformationScreen> {
                       height: 100,
                       fit: BoxFit.cover,
                     ),
-                    SizedBox(width: 20),
+                    SizedBox(width: lengthOfPadding),
                     Expanded(
                       child: Text(
                         data.name ?? noNameText,
                         style: TextStyle(
                           fontSize: medicineNameTextSize,
                           fontWeight: FontWeight.bold,
-                          color: Color(mainThemeColor),
+                          color: Color(ColorTheme.mainThemeBlueColor),
                         ),
                       ),
                     ),
                   ],
                 ),
-                SizedBox(height: 20),
+                SizedBox(height: lengthOfPadding),
                 Expanded(
                   child: SingleChildScrollView(
                     child: Text(

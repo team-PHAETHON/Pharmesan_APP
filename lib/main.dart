@@ -13,24 +13,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Pharmesan',
-      theme: ThemeData(primarySwatch: Colors.blue),
+      theme: ThemeData(
+        brightness: Brightness.light,
+        appBarTheme: AppBarTheme(
+          backgroundColor: Colors.white,
+        ),
+      ),
       home: HomeScreen(),
     );
   }
 }
-      // body: Center(
-      //   child: Column(
-      //     mainAxisAlignment: MainAxisAlignment.center,
-      //     children: <Widget>[
-      //       Row(
-      //         mainAxisAlignment: MainAxisAlignment.start,
-      //         children: [Container(width: 75), Text("Pharmesan")],
-      //       ),
-      //       Text('${response}'),
-      //       ElevatedButton(
-      //         onPressed: callSpringServer,
-      //         child: Text('call API'),
-      //       ),
-      //     ],
-      //   ),
-      // ),

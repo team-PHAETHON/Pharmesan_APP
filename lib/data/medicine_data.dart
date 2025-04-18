@@ -1,6 +1,3 @@
-import 'dart:convert';
-import 'package:http/http.dart' as http;
-
 class MedicineData {
   final int id;
   final String? name;
@@ -21,20 +18,4 @@ class MedicineData {
     'itemName': name,
     'itemImage': description,
   };
-
-  Future<MedicineData?> getMedicineDataByName(String searchSentence) async {
-    final response = await http.get(
-      Uri.parse(
-        'https://practicespringboot-tdxsp.run.goorm.site/drug/search?itemName=$searchSentence'
-      ),
-      headers: {'Content-Type': 'application/json'},
-    );
-
-    if (response.statusCode == 200) {
-      final jsonData = json.decode(response.body);
-      return MedicineData.fromJson(jsonData);
-    } else {
-      return null;
-    }
-  }
 }
