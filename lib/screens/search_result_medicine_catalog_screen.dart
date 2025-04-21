@@ -27,7 +27,9 @@ class _SearchResultMedicineCatalogScreen
   @override
   void initState() {
     super.initState();
+    debugPrint("${widget.medicineName}");
     _medicines = fetchMedicineDataByName(widget.medicineName);
+    debugPrint("initState 끝");
   }
 
   @override

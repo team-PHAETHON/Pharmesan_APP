@@ -29,7 +29,7 @@ Future<List<MedicineData>> fetchMedicineDataByName(
 ) async {
   final response = await http.get(
     Uri.parse(
-      'https://port-0-pharmesan-be-m9b5f19i30884436.sel4.cloudtype.app/drug/search?itemName=$searchSentence',
+      'https://port-0-pharmesan-be-m9b5f19i30884436.sel4.cloudtype.app/drug/search?itemName=약',
     ),
     headers: {'Content-Type': 'application/json'},
   );
@@ -41,6 +41,8 @@ Future<List<MedicineData>> fetchMedicineDataByName(
     final List<dynamic> jsonData = json.decode(response.body);
     return jsonData.map((data) => MedicineData.fromJson(data)).toList();
   } else {
+    debugPrint("웨않됨?");
+    debugPrint(response.toString());
     throw Exception('데이터를 불러올 수 없습니다');
   }
 }
@@ -56,7 +58,7 @@ Future<http.Response> saveMedicine(
 
   Map<String, String> headers = {"Content-Type": "application/json"};
 
-  Map data = {'id': '$id', 'name': '$name', 'description': '$description'};
+  Map data = {'id': '$id', 'itemName': '$name', 'itemImage': '$description'};
   debugPrint("data 생성");
 
   // body를 json으로 인코딩
