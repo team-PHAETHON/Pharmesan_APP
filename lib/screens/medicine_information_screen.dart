@@ -78,6 +78,7 @@ class _MedicineInformationScreenState extends State<MedicineInformationScreen> {
                 SizedBox(height: lengthOfPadding),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  /// TODO: image 약 이미지로 변경
                   children: [
                     Image.network(
                       medicineImageURL,
