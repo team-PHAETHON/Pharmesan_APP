@@ -46,7 +46,7 @@ Future<List<MedicineData>> fetchMedicineDataByName(
 }
 
 Future<http.Response> saveMedicine(
-  int id,
+  String id,
   String? name,
   String? description,
 ) async {
@@ -54,7 +54,7 @@ Future<http.Response> saveMedicine(
 
   Map<String, String> headers = {"Content-Type": "application/json"};
 
-  Map data = {'id': '$id', 'itemName': '$name', 'itemImage': '$description'};
+  Map data = {'id': id, 'itemName': '$name', 'itemImage': '$description'};
   debugPrint("data 생성");
 
   // body를 json으로 인코딩
