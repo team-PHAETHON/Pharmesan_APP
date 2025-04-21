@@ -5,15 +5,15 @@ import 'package:myapp/data/medicine_data.dart';
 import 'dart:convert';
 
 const int successfullyGetDataCode = 200;
+const String serverUri =
+    "https://port-0-pharmesan-be-m9b5f19i30884436.sel4.cloudtype.app/drug_search/";
 
 Future<http.Response> getMedicineData() async {
   final response = await http.get(
-    Uri.parse(
-      'https://port-0-pharmesan-be-m9b5f19i30884436.sel4.cloudtype.app/drug/search?itemName=약',
-    ), // json
+    Uri.parse('${serverUri}search?itemName=약'), // json
     headers: {'Content-Type': 'application/json'},
   );
-  if (response.statusCode == 200) {
+  if (response.statusCode == successfullyGetDataCode) {
     print("200 OK");
     print(response);
     return response;
@@ -28,9 +28,7 @@ Future<List<MedicineData>> fetchMedicineDataByName(
   String searchSentence,
 ) async {
   final response = await http.get(
-    Uri.parse(
-      'https://port-0-pharmesan-be-m9b5f19i30884436.sel4.cloudtype.app/drug/search?itemName=약',
-    ),
+    Uri.parse('${serverUri}search?itemName=약'),
     headers: {'Content-Type': 'application/json'},
   );
 
@@ -52,9 +50,7 @@ Future<http.Response> saveMedicine(
   String? name,
   String? description,
 ) async {
-  var uri = Uri.parse(
-    'https://port-0-pharmesan-be-m9b5f19i30884436.sel4.cloudtype.app/drug/add',
-  );
+  var uri = Uri.parse('${serverUri}add');
 
   Map<String, String> headers = {"Content-Type": "application/json"};
 

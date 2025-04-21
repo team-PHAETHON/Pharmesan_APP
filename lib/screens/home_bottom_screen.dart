@@ -6,6 +6,8 @@ const double minChildSize = 0.7;
 const double maxChildSize = 0.8;
 const double dragBarTopMargin = 10;
 const double dragBarRadius = 10;
+const double dragBarWidth = 50;
+const double dragBarHeight = 5;
 
 class HomeBottomScreen extends StatefulWidget {
   @override
@@ -60,8 +62,8 @@ class _HomeBottomScreenState extends State<HomeBottomScreen> {
 
                 /// 드래그 용 회색 수직 바
                 child: Container(
-                  width: 50,
-                  height: 5,
+                  width: dragBarWidth,
+                  height: dragBarHeight,
                   margin: EdgeInsets.symmetric(vertical: dragBarTopMargin),
                   decoration: BoxDecoration(
                     color: Colors.grey,
