@@ -23,6 +23,25 @@ class _HomeBottomScreenState extends State<HomeBottomScreen> {
     _controller = DraggableScrollableController();
   }
 
+  void changeSize() {
+    final currentSize = _controller.size;
+    if (currentSize < maxChildSize) {
+      /// ✅ 현재 크기가 작으면 maxChildSize로 확장
+      _controller.animateTo(
+        maxChildSize,
+        duration: Duration(milliseconds: animationTime),
+        curve: Curves.easeInOut,
+      );
+    } else {
+      /// ✅ 이미 최대 크기면 minChildSize로 축소
+      _controller.animateTo(
+        minChildSize,
+        duration: Duration(milliseconds: animationTime),
+        curve: Curves.easeInOut,
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return DraggableScrollableSheet(
@@ -41,25 +60,7 @@ class _HomeBottomScreenState extends State<HomeBottomScreen> {
           child: Column(
             children: [
               GestureDetector(
-                onTap: () {
-                  final currentSize = _controller.size;
-                  if (currentSize < maxChildSize) {
-                    /// ✅ 현재 크기가 작으면 maxChildSize로 확장
-                    _controller.animateTo(
-                      maxChildSize,
-                      duration: Duration(milliseconds: animationTime),
-                      curve: Curves.easeInOut,
-                    );
-                  } else {
-                    /// ✅ 이미 최대 크기면 minChildSize로 축소
-                    _controller.animateTo(
-                      minChildSize,
-                      duration: Duration(milliseconds: animationTime),
-                      curve: Curves.easeInOut,
-                    );
-                  }
-                },
-
+                onTap: changeSize,
                 /// 드래그 용 회색 수직 바
                 child: Container(
                   width: dragBarWidth,
