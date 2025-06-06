@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/color_theme/color_theme.dart';
 import 'package:myapp/screens/search_result_medicine_catalog_screen.dart';
 import 'searching_bar.dart';
 
@@ -9,7 +10,6 @@ const double bottomPadding = 50;
 const double rateOfHeaderHeight = 0.35;
 const double titleFontSize = 28;
 const double headerWidth = 300;
-const int mainThemeColor = 0xff578FCA;
 
 class HeaderSection extends StatelessWidget {
   final Size size;
@@ -32,7 +32,7 @@ class HeaderSection extends StatelessWidget {
       height: size.height * rateOfHeaderHeight,
       width: double.infinity,
       child: Container(
-        color: Color(mainThemeColor),
+        color: Color(ColorTheme.mainThemeBlueColor),
         width: headerWidth,
         padding: EdgeInsets.fromLTRB(
           leftPadding,
