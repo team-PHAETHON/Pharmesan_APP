@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myapp/widget/grey_touch_horizontal_button.dart';
 
 const double cornerRadius = 20;
-const double minChildSize = 0.7;
+const double minChildSize = 0.65;
 const double maxChildSize = 0.8;
 
 class HomeBottomScreen extends StatefulWidget {
@@ -17,6 +17,25 @@ class _HomeBottomScreenState extends State<HomeBottomScreen> {
   void initState() {
     super.initState();
     _controller = DraggableScrollableController();
+  }
+
+  void changeSize() {
+    final currentSize = _controller.size;
+    if (currentSize < maxChildSize) {
+      /// ✅ 현재 크기가 작으면 maxChildSize로 확장
+      _controller.animateTo(
+        maxChildSize,
+        duration: Duration(milliseconds: animationTime),
+        curve: Curves.easeInOut,
+      );
+    } else {
+      /// ✅ 이미 최대 크기면 minChildSize로 축소
+      _controller.animateTo(
+        minChildSize,
+        duration: Duration(milliseconds: animationTime),
+        curve: Curves.easeInOut,
+      );
+    }
   }
 
   @override
@@ -36,7 +55,7 @@ class _HomeBottomScreenState extends State<HomeBottomScreen> {
           ),
           child: Column(
             children: [
-              GreyTouchHorizontalButton(controller: _controller),
+              GreyTouchHorizontalButton(onTap: changeSize),
               Flexible(
                 /// TODO: 메인화면에 기능 추가 및 수정 예정
                 child: SingleChildScrollView(
